@@ -1,0 +1,18 @@
+#!/bin/bash
+
+idCodes=('1DNG' '1DPK' '1A11' '2M1J' '1ZWD' '2KOE')
+myZero=0.000001
+timeMax=$((1*1*5*60))
+sampleSize=6
+numReps=100
+
+numberOfIdCodes=${#idCodes[@]}
+
+for ((k = 0; k < $numberOfIdCodes; k++))
+do
+	idCode=${idCodes[$k]}
+	
+	octave run_script_iABP.m $idCode $myZero $timeMax $sampleSize $numReps 'iabp'
+	
+	sleep 2
+done
